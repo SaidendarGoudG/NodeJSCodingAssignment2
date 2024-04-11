@@ -198,8 +198,8 @@ app.get(
     const {username, userId} = request
     const {tweetId} = request.params
     const getTweetQuery = `SELECT tweet,
-    (SELECT COUNT(*) FROM like WHERE tweet_id='${tweetId}' AS likes),
-    (SELECT COUNT(*) FROM reply WHERE tweet_id='${tweetId}' AS replies),
+    (SELECT COUNT(*) FROM like WHERE tweet_id='${tweetId}') AS likes,
+    (SELECT COUNT(*) FROM reply WHERE tweet_id='${tweetId}') AS replies,
     date_time AS dateTime
     FROM tweet 
     WHERE tweet.tweet_id='${tweetId}';`
